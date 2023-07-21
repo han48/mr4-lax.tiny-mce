@@ -35,7 +35,7 @@ In the extensions section of the config/admin.php file, add some configuration t
 ```
 The configuration of plugins and toolbar of the editor can be found in [TinyMCE Document](https://www.tiny.cloud/docs/tinymce/6/basic-example/)
 
-Usage
+## Usage
 Use it in the form:
 ```php
 $form->tinymce('content')
@@ -46,5 +46,5 @@ $form->tinymce('content')
   ]);
 ```
 
-License
+## License
 Licensed under The [MIT License (MIT)](https://github.com/han48/mr4-lax.tiny-mce/blob/main/LICENSE).
