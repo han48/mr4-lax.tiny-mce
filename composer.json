@@ -1,0 +1,34 @@
+{
+    "name": "mr4-lax/tiny-mce",
+    "description": "Laravel admin form TinyMCE",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "editor", "tinymce"],
+    "version": "0.0.1",
+    "homepage": "https://github.com/han48/mr4-lax.tiny-mce",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mr4",
+            "email": "zzz4everzzz@live.co.uk"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mr4Lax\\TinyMce\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mr4Lax\\TinyMce\\TinyMceServiceProvider"
+            ]
+        }
+    }
+}
