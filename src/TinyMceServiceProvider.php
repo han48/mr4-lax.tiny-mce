@@ -26,18 +26,18 @@ class TinyMceServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole() && $views = $extension->views()) {
             $this->publishes(
                 [$views => resource_path('views/vendor/mr4-lax')],
-                'mr4-lax'
+                'mr4-lax-tinymce'
             );
         }
 
         if ($this->app->runningInConsole() && $assets = $extension->assets()) {
             $this->publishes(
                 [$assets => public_path('vendor/mr4-lax')],
-                'mr4-lax'
+                'mr4-lax-tinymce'
             );
             $this->publishes(
                 [$extension->lang => resource_path('lang')],
-                'mr4-lax'
+                'mr4-lax-tinymce'
             );
         }
 

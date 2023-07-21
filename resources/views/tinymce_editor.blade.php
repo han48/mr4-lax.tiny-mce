@@ -1,21 +1,24 @@
 @php
+    $lowerAttributes = strtolower($attributes);
+
     $readonly = 'false';
-    if (Str::contains($attributes, 'readOnly="true"')) {
+    if (Str::contains($lowerAttributes, strtolower('readOnly="true"')) || Str::contains($lowerAttributes, strtolower('readOnly="1"'))) {
         $readonly = 'true';
     }
 
     $menubar = 'true';
-    if (Str::contains($attributes, 'menubar="false"')) {
+    if (Str::contains($lowerAttributes, strtolower('menubar="false"'))) {
         $menubar = 'false';
     }
 
     $statusbar = 'true';
-    if (Str::contains($attributes, 'statusbar="false"')) {
+    if (Str::contains($lowerAttributes, strtolower('statusbar="false"'))) {
         $statusbar = 'false';
     }
 
     // TOP: 90px | BOTTOM: 25px
     $height = 115 + $rows * 40 . 'px';
+
 @endphp
 
 <div class="{{ $viewClass['form-group'] }} {!! !$errors->has($errorKey) ? '' : 'has-error' !!}">
@@ -29,28 +32,30 @@
     </div>
 </div>
 
-<script>
-    initTinyMce = (readonly = false, height = 370) => {
-        tinymce.init({
-            selector: '#{{ $id }}',
-            plugins: '{{ $plugins }}',
-            toolbar: '{{ $toolbar }}',
-            readonly: readonly,
-            height: height,
-            branding: false,
+@if (config('admin.extensions.mr4lax.enable', true))
+    <script>
+        initTinyMce = (readonly = false, height = 370) => {
+            tinymce.init({
+                selector: '#{{ $id }}',
+                plugins: '{{ $plugins }}',
+                toolbar: '{{ $toolbar }}',
+                readonly: readonly,
+                height: height,
+                branding: false,
 
-            menubar: {{ $menubar }},
-            statusbar: {{ $statusbar }},
+                menubar: {{ $menubar }},
+                statusbar: {{ $statusbar }},
 
-            images_upload_url: '{{ $uploadRouter }}',
-            automatic_uploads: true,
-            relative_urls: false,
-            remove_script_host: false,
-        })
-    }
-    document.onreadystatechange = function() {
-        if (document.readyState == "complete") {
-            initTinyMce({{ $readonly }}, '{{ $height }}')
+                images_upload_url: '{{ $uploadRouter }}',
+                automatic_uploads: true,
+                relative_urls: false,
+                remove_script_host: false,
+            })
         }
-    };
-</script>
+        document.onreadystatechange = function() {
+            if (document.readyState == "complete") {
+                initTinyMce({{ $readonly }}, '{{ $height }}')
+            }
+        };
+    </script>
+@endif
