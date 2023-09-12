@@ -9,7 +9,7 @@ This is a `laravel-admin` extension that integrates [TinyMCE 6](https://www.tiny
 ## Installation
 ```bash
 composer require mr4-lax/tiny-mce
-php artisan vendor:publish --tag=mr4-lax-tinymce
+php artisan vendor:publish --tag=mr4-lax-tinymce --force
 ```
 
 ## Configuration
